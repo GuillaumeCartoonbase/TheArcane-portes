@@ -31,6 +31,7 @@ const eventFire = (riveEvent) => {
 		case "left":
 		case "right":
 		case "gameOver":
+		case "endGame":
 			console.log(eventName);
 			break;
 		case "question":
