@@ -1,3 +1,4 @@
+let questionNum = 1;
 const stateMachine = "State Machine 1";
 
 const riveInstance = new rive.Rive({
@@ -21,6 +22,10 @@ window.addEventListener(
 function onLoadHandler() {
 	// Prevent a blurry canvas by using the device pixel ratio
 	riveInstance.resizeDrawingSurfaceToCanvas();
+	const atWhichDoor = riveInstance
+		.stateMachineInputs(stateMachine)
+		.find((i) => i.name === "questionNum");
+	atWhichDoor.value = questionNum;
 }
 
 const eventFire = (riveEvent) => {
@@ -36,6 +41,7 @@ const eventFire = (riveEvent) => {
 			break;
 		case "question":
 			console.log(eventProperties.index);
+			questionNum = eventProperties.index;
 			break;
 
 		// Change pointer when hovering action
